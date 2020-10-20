@@ -12,3 +12,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 900a84827c42c5f77a17ae8e510ed203
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }} 
