@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: waka-box
-        uses: node --unhandled-rejections=strict ./index.js
+        uses: minibear2333/waka-box@master
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: 900a84827c42c5f77a17ae8e510ed203
