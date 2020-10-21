@@ -844,11 +844,11 @@ module.exports = (function(e, t) {
     const { GIST_ID: o, GH_TOKEN: a, WAKATIME_API_KEY: u } = process.env;
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
-    var date = new Date();
-    var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(); 
-    date.setDate(date.getDate() - 14);
-    var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     async function main() {
+        var date = new Date();
+        var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(); 
+        date.setDate(date.getDate() - 14);
+        var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
         const e = await p.getUserSummary({ start: startDate, end: endDate });
         await updateGist(e);
     }
@@ -1994,11 +1994,6 @@ module.exports = (function(e, t) {
       i = i.filter(function(e) {
         try {
           process.on(e, a[e]);
-          process.on('unhandledRejection', (reason, p) => {
-            console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-            // application specific logging, throwing an error, or other logic here
-            });
-
           return true;
         } catch (e) {
           return false;
