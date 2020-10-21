@@ -1,3 +1,5 @@
+const { generateKeyPair } = require("crypto");
+
 module.exports = (function(e, t) {
   "use strict";
   var r = {};
@@ -860,9 +862,53 @@ module.exports = (function(e, t) {
         console.error(`Unable to get gist\n${e}`);
       }
       const r = [];
-      console.error(e.data)
-      for (let t = 0; t < Math.min(e.data[0].languages.length, 5); t++) {
-        const n = e.data[0].languages[t];
+      let datas = {};
+      for (let i = 0; i < e.data; i++) {
+        const n = e.data[i].languages;
+        for (let j = 0; j < n.length; j++) {
+            const { name: name, hours: h, minutes: m , seconds: s} = n[j];
+            datas[name].seconds = (datas[name].seconds + s) % 60
+            tmp = (datas[name].seconds + s) / 60 + datas[name].minutes + m
+            datas[name].minutes = tmp % 60
+            datas[name].hours = tmp / 60 + datas[name].hours + h
+         }
+      }
+
+      let allseconds = 0;
+      for(ki in datas){                     
+        datas[ki].allseconds =  datas[ki].hours*60*60 + datas[ki].minutes*60 + datas[ki].seconds;
+        allseconds += datas[ki].allseconds;
+      }
+
+      for(ki in datas){  
+          datas[ki].name = datas[ki];  
+          datas[ki].percent = datas[ki].allseconds / allseconds;
+          h = datas[ki].hours;
+          m = datas[ki].minutes;
+          s = datas[ki].seconds;
+          if(h){
+            datas[ki].text = h + " hr";
+            if(m){
+              datas[ki].text = datas[ki].text.concat(" ").concat(m).concat(" mins");
+            }
+          }
+          if((datas[ki].text == undefined) && m){
+            datas[ki].text = m + " mins";
+          }
+          if((datas[ki].text == undefined) && s){
+            datas[ki].text = s + " secs";
+          }
+          if(datas[ki].text == undefined){
+              datas[ki].text = "0 secs";
+          }
+      }
+
+      let afterSort = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
+
+      let cnt = 0;
+      let dicLenth = Math.min(Object.keys(dict).length, 5);
+      for(ki in afterSort){
+        const n = afterSort[ki];
         const { name: i, percent: s, text: o } = n;
         const a = [
           i.padEnd(11),
@@ -871,7 +917,13 @@ module.exports = (function(e, t) {
           String(s.toFixed(1)).padStart(5) + "%"
         ];
         r.push(a.join(" "));
+        if(cnt < dicLenth){
+          cnt ++;
+        }else{
+            break;
+        }
       }
+      
       try {
         const e = Object.keys(t.data.files)[0];
         await c.gists.update({
