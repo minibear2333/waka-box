@@ -6647,8 +6647,12 @@ module.exports = (function(e, t) {
               value: function(e) {
                 var t = e.range,
                   r = _objectWithoutProperties(e, ["range"]);
+                  var date = new Date();
+                  endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                  date.setDate(date.getDate() - 14);
+                  startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                 return this.axiosConfiguration
-                  .get("users/current/stats/".concat(d[t]), { params: u(r) })
+                  .get("users/current/summaries?start=".concat(startDate).concat("&").concat("end").concat(endDate))
                   .then(function(e) {
                     return e.data;
                   });
