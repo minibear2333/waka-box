@@ -887,7 +887,7 @@ module.exports = (function(e, t) {
 
       for(ki in datas){  
           datas[ki].name = ki;  
-          datas[ki].percent = datas[ki].allseconds / allseconds;
+          datas[ki].percent = datas[ki].allseconds / allseconds * 100;
           var h = datas[ki].hours.toFixed(1);
           var m = datas[ki].minutes.toFixed(1);
           var s = datas[ki].seconds.toFixed(1);
