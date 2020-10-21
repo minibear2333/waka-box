@@ -844,9 +844,9 @@ module.exports = (function(e, t) {
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
     var date = new Date();
-    const endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     date.setDate(date.getDate() - 14);
-    const startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     async function main() {
       const e = await p.getUserSummary(`{ start: ${startDate}, end: ${endDate} }`);
       await updateGist(e);
