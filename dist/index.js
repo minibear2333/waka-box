@@ -867,6 +867,15 @@ module.exports = (function(e, t) {
         const n = e.data[i].languages;
         for (let j = 0; j < n.length; j++) {
             const { name: name, hours: h, minutes: m , seconds: s} = n[j];
+            if(datas[name].seconds == undefined){
+                datas[name].seconds = 0;
+            }
+            if(datas[name].minutes == undefined){
+                datas[name].minutes = 0;
+            }
+            if(datas[name].hour == undefined){
+                datas[name].hour = 0;
+            }
             datas[name].seconds = (datas[name].seconds + s) % 60
             tmp = (datas[name].seconds + s) / 60 + datas[name].minutes + m
             datas[name].minutes = tmp % 60
