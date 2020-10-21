@@ -843,11 +843,11 @@ module.exports = (function(e, t) {
     const { GIST_ID: o, GH_TOKEN: a, WAKATIME_API_KEY: u } = process.env;
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
+    var date = new Date();
+    const endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    date.setDate(date.getDate() - 14);
+    const startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     async function main() {
-      var date = new Date();
-      const endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-      date.setDate(date.getDate() - 14);
-      const startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       const e = await p.getUserSummary(`{ start: startDate, end: endDate }`);
       await updateGist(e);
     }
