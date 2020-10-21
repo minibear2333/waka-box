@@ -796,10 +796,10 @@ module.exports = (function(e, t) {
       var n = this.useColors;
       if (n) {
         var i = this.color;
-        var s = "[3" + (i < 8 ? i : "8;5;" + i);
-        var o = "  " + s + ";1m" + r + " " + "[0m";
+        var s = "[3" + (i < 8 ? i : "8;5;" + i);
+        var o = "  " + s + ";1m" + r + " " + "[0m";
         e[0] = o + e[0].split("\n").join("\n" + o);
-        e.push(s + "m+" + t.humanize(this.diff) + "[0m");
+        e.push(s + "m+" + t.humanize(this.diff) + "[0m");
       } else {
         e[0] = getDate() + r + " " + e[0];
       }
@@ -6459,7 +6459,7 @@ module.exports = (function(e, t) {
         return { author: r, page: void 0 === n ? null : n };
       },
       d = Object.freeze(
-        (_defineProperty((s = {}), o.LAST_7_DAYS, "last_7_days"),
+        (_defineProperty((s = {}), o.LAST_7_DAYS, "last_14_days"),
         _defineProperty(s, o.LAST_30_DAYS, "last_30_days"),
         _defineProperty(s, o.LAST_6_MONTHS, "last_6_months"),
         _defineProperty(s, o.LAST_YEAR, "last_year"),
