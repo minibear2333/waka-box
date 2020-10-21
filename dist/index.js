@@ -845,9 +845,9 @@ module.exports = (function(e, t) {
     const c = new s({ auth: `token ${a}` });
     async function main() {
       var date = new Date();
-      const endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       date.setDate(date.getDate() - 14);
-      const startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
       const e = await p.getUserSummary({ start: `startDate`, end: `endDate` });
       await updateGist(e);
     }
@@ -15251,6 +15251,15 @@ module.exports = (function(e, t) {
         if (t.called) throw new Error(t.onceError);
         t.called = true;
         return (t.value = e.apply(this, arguments));
+      };
+      var r = e.name || "Function wrapped with `once`";
+      t.onceError = r + " shouldn't be called more than once";
+      t.called = false;
+      return t;
+    }
+  }
+});
+ return (t.value = e.apply(this, arguments));
       };
       var r = e.name || "Function wrapped with `once`";
       t.onceError = r + " shouldn't be called more than once";
