@@ -868,12 +868,13 @@ module.exports = (function(e, t) {
         for (let j = 0; j < n.length; j++) {
             const { name: name, hours: h, minutes: m , seconds: s} = n[j];
             if(datas[name]==undefined){
-                datas[name] = {seconds:0,minutes:0,hours:0}
+                datas[name] = {seconds:0,minutes:0,hours:0};
             }
-            datas[name].seconds = (datas[name].seconds + s) % 60
-            tmp = (datas[name].seconds + s) / 60 + datas[name].minutes + m
-            datas[name].minutes = tmp % 60
-            datas[name].hours = tmp / 60 + datas[name].hours + h
+            var currSeconds = datas[name].seconds + s;
+            datas[name].seconds = currSeconds % 60;
+            var currMinutes = datas[name].minutes + m + currSeconds/60;
+            datas[name].minutes = currMinutes % 60;
+            datas[name].hours = datas[name].hours + h + currMinutes / 60;
          }
       }
       console.error("add datas:"+JSON.stringify(datas));
@@ -885,7 +886,7 @@ module.exports = (function(e, t) {
       }
 
       for(ki in datas){  
-          datas[ki].name = datas[ki];  
+          datas[ki].name = ki;  
           datas[ki].percent = datas[ki].allseconds / allseconds;
           var h = datas[ki].hours;
           var m = datas[ki].minutes;
