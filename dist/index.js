@@ -860,7 +860,7 @@ module.exports = (function(e, t) {
         console.error(`Unable to get gist\n${e}`);
       }
       const r = [];
-      console.Console(e.data)
+      console.error(e.data)
       for (let t = 0; t < Math.min(e.data.languages.length, 5); t++) {
         const n = e.data.languages[t];
         const { name: i, percent: s, text: o } = n;
