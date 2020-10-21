@@ -848,7 +848,7 @@ module.exports = (function(e, t) {
     date.setDate(date.getDate() - 14);
     var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     async function main() {
-      const e = await p.getUserSummary(`{ start: ${startDate}, end: ${endDate} }`);
+      const e = await p.getUserSummary({ start: `${startDate}`, end: `${endDate}` });
       await updateGist(e);
     }
     async function updateGist(e) {
