@@ -902,12 +902,13 @@ module.exports = (function(e, t) {
               datas[ki].text = "0 secs";
           }
       }
+      console.error("datas:"+datas);
 
       let afterSort = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
     
       let cnt = 0;
       let dicLenth = Math.min(Object.keys(afterSort).length, 5);
-      console.error(afterSort);
+      console.error("afterSort:"+afterSort);
       for(ki in afterSort){
         const n = afterSort[ki];
         const { name: i, percent: s, text: o } = n;
