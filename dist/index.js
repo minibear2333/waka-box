@@ -863,7 +863,7 @@ module.exports = (function(e, t) {
       }
       const r = [];
       let datas = {};
-      for (let i = 0; i < e.data; i++) {
+      for (let i = 0; i < e.data.length; i++) {
         const n = e.data[i].languages;
         for (let j = 0; j < n.length; j++) {
             const { name: name, hours: h, minutes: m , seconds: s} = n[j];
