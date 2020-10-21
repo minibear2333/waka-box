@@ -911,8 +911,8 @@ module.exports = (function(e, t) {
 
       let afterSortKey = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
     
-      for(let i=0;i< Math.min(Object.keys(afterSortKey).length, 5);i++){
-        const n = datas[afterSortKey[i]];
+      for(let t=0;t< Math.min(Object.keys(afterSortKey).length, 5);t++){
+        const n = datas[afterSortKey[t]];
         const { name: i, percent: s, text: o } = n;
         const a = [
           i.padEnd(11),
