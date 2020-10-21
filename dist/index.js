@@ -873,6 +873,7 @@ module.exports = (function(e, t) {
             datas[name].hours = tmp / 60 + datas[name].hours + h
          }
       }
+      console.error("add datas:"+JSON.stringify(datas));
 
       let allseconds = 0;
       for(ki in datas){                     
@@ -902,13 +903,13 @@ module.exports = (function(e, t) {
               datas[ki].text = "0 secs";
           }
       }
-      console.error("datas:"+datas);
+      console.error("datas:"+JSON.stringify(datas));
 
       let afterSort = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
     
       let cnt = 0;
       let dicLenth = Math.min(Object.keys(afterSort).length, 5);
-      console.error("afterSort:"+afterSort);
+      console.error("afterSort:"+JSON.stringify(afterSort));
       for(ki in afterSort){
         const n = afterSort[ki];
         const { name: i, percent: s, text: o } = n;
