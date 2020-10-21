@@ -1,6 +1,7 @@
 module.exports = (function(e, t) {
   "use strict";
   var r = {};
+  
   function __webpack_require__(t) {
     if (r[t]) {
       return r[t].exports;
@@ -844,17 +845,13 @@ module.exports = (function(e, t) {
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
     var date = new Date();
-    var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate(); 
     date.setDate(date.getDate() - 14);
     var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
     async function main() {
-        process.on('unhandledRejection', (reason, p) => {
-        console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-        const e = await p.getUserSummary({ start: `${startDate}`, end: `${endDate}` });
+        const e = await p.getUserSummary({ start: startDate, end: endDate });
         await updateGist(e);
-        });
-      }
-    
+    }
     async function updateGist(e) {
       let t;
       try {
