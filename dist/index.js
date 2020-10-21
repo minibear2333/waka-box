@@ -888,9 +888,9 @@ module.exports = (function(e, t) {
       for(ki in datas){  
           datas[ki].name = ki;  
           datas[ki].percent = datas[ki].allseconds / allseconds * 100;
-          var h = datas[ki].hours.toFixed(1);
-          var m = datas[ki].minutes.toFixed(1);
-          var s = datas[ki].seconds.toFixed(1);
+          var h = datas[ki].hours.toFixed();
+          var m = datas[ki].minutes.toFixed();
+          var s = datas[ki].seconds.toFixed();
           if(h){
             datas[ki].text = h + " hr";
             if(m){
@@ -911,7 +911,7 @@ module.exports = (function(e, t) {
 
       let afterSortKey = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
     
-      for(let t=0;t< Math.min(Object.keys(afterSortKey).length, 5);t++){
+      for(let t=0;t< Math.min(Object.keys(afterSortKey).length, 6);t++){
         const n = datas[afterSortKey[t]];
         const { name: i, percent: s, text: o } = n;
         const a = [
