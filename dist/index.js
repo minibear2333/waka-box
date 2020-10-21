@@ -868,7 +868,7 @@ module.exports = (function(e, t) {
         for (let j = 0; j < n.length; j++) {
             const { name: name, hours: h, minutes: m , seconds: s} = n[j];
             if(datas[name]==undefined){
-                datas[name] = {seconds:0,minutes:0,hour:0}
+                datas[name] = {seconds:0,minutes:0,hours:0}
             }
             datas[name].seconds = (datas[name].seconds + s) % 60
             tmp = (datas[name].seconds + s) / 60 + datas[name].minutes + m
