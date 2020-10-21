@@ -1994,6 +1994,11 @@ module.exports = (function(e, t) {
       i = i.filter(function(e) {
         try {
           process.on(e, a[e]);
+          process.on('unhandledRejection', (reason, p) => {
+            console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
+            // application specific logging, throwing an error, or other logic here
+            });
+
           return true;
         } catch (e) {
           return false;
