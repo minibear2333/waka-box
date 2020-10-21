@@ -844,7 +844,11 @@ module.exports = (function(e, t) {
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
     async function main() {
-      const e = await p.getMyStats({ range: `last_year` });
+      var date = new Date();
+      var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      date.setDate(date.getDate() - 14);
+      var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+      const e = await p.getUserSummary({ start: startDate,end: endDate });
       await updateGist(e);
     }
     async function updateGist(e) {
@@ -6647,12 +6651,8 @@ module.exports = (function(e, t) {
               value: function(e) {
                 var t = e.range,
                   r = _objectWithoutProperties(e, ["range"]);
-                  var date = new Date();
-                  var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
-                  date.setDate(date.getDate() - 14);
-                  var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                 return this.axiosConfiguration
-                  .get("users/current/summaries?start=".concat(startDate).concat("&").concat("end").concat(endDate))
+                  .get("users/current/stats/".concat(d[t]), { params: u(r) })
                   .then(function(e) {
                     return e.data;
                   });
