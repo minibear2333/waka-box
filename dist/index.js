@@ -861,7 +861,7 @@ module.exports = (function(e, t) {
       }
       const r = [];
       console.error(e.data)
-      for (let t = 0; t < Math.min(e.data.languages.length, 5); t++) {
+      for (let t = 0; t < Math.min(e.data[0].languages.length, 5); t++) {
         const n = e.data.languages[t];
         const { name: i, percent: s, text: o } = n;
         const a = [
