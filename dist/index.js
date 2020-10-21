@@ -6648,9 +6648,9 @@ module.exports = (function(e, t) {
                 var t = e.range,
                   r = _objectWithoutProperties(e, ["range"]);
                   var date = new Date();
-                  endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                  var endDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                   date.setDate(date.getDate() - 14);
-                  startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+                  var startDate = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
                 return this.axiosConfiguration
                   .get("users/current/summaries?start=".concat(startDate).concat("&").concat("end").concat(endDate))
                   .then(function(e) {
