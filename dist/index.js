@@ -909,13 +909,13 @@ module.exports = (function(e, t) {
       }
       console.error("datas:"+JSON.stringify(datas));
 
-      let afterSort = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
+      let afterSortKey = Object.keys(datas).sort(function(a,b){ return datas[b]["percent"] - datas[a]["percent"]; });
     
       let cnt = 0;
-      let dicLenth = Math.min(Object.keys(afterSort).length, 5);
+      let dicLenth = ;
       console.error("afterSort:"+JSON.stringify(afterSort));
-      for(ki in afterSort){
-        const n = afterSort[ki];
+      for(let i=0;i< Math.min(Object.keys(afterSortKey).length, 5);i++){
+        const n = datas[afterSortKey[i]];
         const { name: i, percent: s, text: o } = n;
         const a = [
           i.padEnd(11),
@@ -924,11 +924,6 @@ module.exports = (function(e, t) {
           String(s.toFixed(1)).padStart(5) + "%"
         ];
         r.push(a.join(" "));
-        if(cnt < dicLenth){
-          cnt ++;
-        }else{
-            break;
-        }
       }
       
       try {
