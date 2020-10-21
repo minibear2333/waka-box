@@ -844,7 +844,7 @@ module.exports = (function(e, t) {
     const p = new n(u);
     const c = new s({ auth: `token ${a}` });
     async function main() {
-      const e = await p.getMyStats({ range: i.LAST_7_DAYS });
+      const e = await p.getMyStats({ range: `last_year` });
       await updateGist(e);
     }
     async function updateGist(e) {
@@ -6459,7 +6459,7 @@ module.exports = (function(e, t) {
         return { author: r, page: void 0 === n ? null : n };
       },
       d = Object.freeze(
-        (_defineProperty((s = {}), o.LAST_7_DAYS, "last_14_days"),
+        (_defineProperty((s = {}), o.LAST_7_DAYS, "last_7_days"),
         _defineProperty(s, o.LAST_30_DAYS, "last_30_days"),
         _defineProperty(s, o.LAST_6_MONTHS, "last_6_months"),
         _defineProperty(s, o.LAST_YEAR, "last_year"),
